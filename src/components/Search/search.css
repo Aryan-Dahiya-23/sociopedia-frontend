@@ -1,0 +1,84 @@
+CSS for Search Items
+
+.container-items {
+    width: 50%;
+    margin: 25px auto 0px;
+}
+
+.search-item {
+    display: flex;
+    height: 75px;
+    border-bottom: 1px solid #ddd;
+    padding: 7.5px 0px;
+    cursor: pointer;
+}
+
+.search-item img {
+    background-color: rgba(0, 0, 0, 0.05);
+    margin-right: 7.5px;
+}
+
+.search-item .item-info {
+    height: 70%;
+    margin: auto;
+}
+
+/* .item-info .item-title {
+    font-family: Roboto;
+    font-weight: bold;
+    margin-bottom: 10px;
+} */
+
+.item-info .item-title {
+    font-family: Roboto;
+    font-weight: bold;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.item-info .item-description {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.85rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .container-items {
+        width: 95%;
+        margin: 25px auto 0px;
+    }
+
+    .item-info .item-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+
+    .container-items {
+        width: 75%;
+        margin: 25px auto 0px;
+    }
+
+    .item-info .item-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+
+}
