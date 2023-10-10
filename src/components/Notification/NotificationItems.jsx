@@ -32,7 +32,7 @@ const NotificationItems = (props) => {
 
             {notification.friendImageUrl && notification.message === "commented on your post." &&
                 <div className="cursor-pointer" onClick={props.getAccount}>
-                    <img src={VITE_URL + "/" + notification.friendImageUrl}
+                    <img src={notification.friendImageUrl}
                         alt="post image"
                         className="h-10 w-10 object-cover" />
                 </div>
