@@ -7,8 +7,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 
 // const iconStyle = { fontSize: "30px" };
 
-const mobileIconStyle = { fontSize: "30px" };
-const desktopIconStyle = { fontSize: "27px" };
+const mobileIconStyle = { fontSize: "27.5px" };
+const desktopIconStyle = { fontSize: "27.5px" };
 
 const isMobileScreen = () => window.innerWidth <= 768;
 const iconStyle = isMobileScreen() ? mobileIconStyle : desktopIconStyle;
