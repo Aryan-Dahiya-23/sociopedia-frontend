@@ -25,10 +25,25 @@ const Header = () => {
     const fetchData = async () => {
       if (loggedIn === false) {
         try {
-          const response = await axios.get(VITE_URL + "/profile", {
-            withCredentials: true,
-          });
 
+          const cookies = document.cookie.split('; ');
+          const tokenCookie = cookies.find(cookie => cookie.startsWith('token='));
+          let token = '';
+          if (tokenCookie) token = tokenCookie.split('=')[1];
+
+
+          // const response = await axios.get(VITE_URL + "/profile", {
+          //   withCredentials: true,
+          // });
+
+          const response = await axios.get(VITE_URL + "/profile", {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+            withCredentials: true 
+          });
+          
           if (response.data) {
             const { email, _id } = response.data;
             setUserId(_id);

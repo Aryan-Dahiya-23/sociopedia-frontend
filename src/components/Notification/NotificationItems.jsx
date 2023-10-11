@@ -29,7 +29,7 @@ const NotificationItems = (props) => {
                         className="h-10 w-10 object-cover" />
                 </div>
             }
-
+            
             {notification.friendImageUrl && notification.message === "commented on your post." &&
                 <div className="cursor-pointer" onClick={props.getAccount}>
                     <img src={notification.friendImageUrl}
