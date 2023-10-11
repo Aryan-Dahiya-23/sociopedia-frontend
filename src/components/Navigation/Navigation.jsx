@@ -29,6 +29,8 @@ const Navigation = () => {
 
     const handleLogout = async () => {
         try {
+
+            console.log("clicked");
             document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 
             await axios.post(VITE_URL + "/logout", {}, {
@@ -57,13 +59,13 @@ const Navigation = () => {
         // <div className="bg-white fixed w-full bottom-0 h-10 md:h-[360px] lg:h-auto lg:w-[15%] lg:bottom-auto lg:mt-[4%] lg:ml-[7.5%] lg:rounded-lg">
         // <div className="bg-white fixed w-full bottom-0 h-10 md:h-[360px] lg:relative lg:h-auto lg:w-[15%]  lg:mt-[5%] lg:ml-[7.5%] lg:rounded-lg">
 
-        <div className="bg-white flex justify-center items-center fixed w-full h-14 px-4 border-t border-secondary-400 bottom-0 md:h-[360px] lg:absolute lg:max-h-64 lg:w-[15%] lg:p-0  lg:top-40 lg:left-28 lg:rounded-lg lg:border-none">
+        <div className="bg-white flex justify-center items-center fixed w-full h-14 px-4 border-t border-secondary-200 bottom-0 md:h-[360px] lg:absolute lg:max-h-64 lg:w-[15%] lg:p-0  lg:top-40 lg:left-28 lg:rounded-lg lg:border-none">
 
             <ul className="w-full flex flex-row justify-between items-center lg:justify-start lg:items-start lg:ml-4 lg:py-2 lg:flex-col">
 
                 {NavigationData.map((item, index) => {
 
-                    if (loggedIn && item.path === "/signin" || !loggedIn && item.title === "logout") {
+                    if (loggedIn && item.path === "/signin" || !loggedIn && item.title === "Logout") {
                         return null;
                     }
 
@@ -78,7 +80,7 @@ const Navigation = () => {
                         )
                     }
 
-                    if (item.title === "logout") {
+                    if (item.title === "Logout") {
                         return (
                             <li key={index} className="icons lg:px-1.5 lg:py-2.5 lg:rounded-xl lg:hover:bg-secondary-50" onClick={handleLogout}>
                                 <Link to={item.path}>
