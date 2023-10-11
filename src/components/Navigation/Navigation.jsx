@@ -29,7 +29,7 @@ const Navigation = () => {
 
     const handleLogout = async () => {
         try {
-            console.log("clicked");
+            document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 
             await axios.post(VITE_URL + "/logout", {}, {
                 withCredentials: true

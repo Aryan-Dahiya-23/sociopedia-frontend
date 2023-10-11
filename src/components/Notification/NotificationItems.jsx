@@ -11,7 +11,7 @@ const NotificationItems = (props) => {
 
             <div className="flex flex-row space-x-1">
                 <div className="cursor-pointer" onClick={props.getProfile}>
-                    <img src={VITE_URL + "/" + notification.userProfileImageUrl}
+                    <img src={notification.userProfileImageUrl}
                         alt="profile image"
                         className="h-10 w-10 object-cover rounded-full" />
                 </div>
@@ -24,15 +24,15 @@ const NotificationItems = (props) => {
 
             {notification.postImageUrl &&
                 <div className="cursor-pointer" onClick={props.getAccount}>
-                    <img src={ VITE_URL + "/" + notification.postImageUrl}
+                    <img src={notification.postImageUrl}
                         alt="post image"
                         className="h-10 w-10 object-cover" />
                 </div>
             }
-
+            
             {notification.friendImageUrl && notification.message === "commented on your post." &&
                 <div className="cursor-pointer" onClick={props.getAccount}>
-                    <img src={VITE_URL + "/" + notification.friendImageUrl}
+                    <img src={notification.friendImageUrl}
                         alt="post image"
                         className="h-10 w-10 object-cover" />
                 </div>
