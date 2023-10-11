@@ -151,7 +151,7 @@ const Profile = () => {
                         </div>
                     </div>
 
-                   <div className="flex flex-row mt-5 mb-1 justify-between items-center lg:px-1 text-xs lg:text-sm">
+                   <div className="flex flex-row mt-5 mb-1 px-1 justify-between items-center text-xs lg:text-sm">
 
                         <div className={`flex flex-row space-x-1 p-1 cursor-pointer lg:space-x-1.5 lg:p-1.5 hover:text-primary-500 hover:border-b-4 hover:border-b-primary-500 ${showPosts ? 'border-b-primary-500 border-b-4 text-primary-500' : ''}`}
                             onClick={() => handleTabClick("showPosts")}>
