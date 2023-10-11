@@ -1,6 +1,4 @@
-import Header from "../components/Header/Header";
-import Notification from "../components/Notification/Notification";
-import Navigation from "../components/Navigation/Navigation";
+import { Header, Notification, Navigation } from "./index"
 
 const NotificationPage = () => {
 

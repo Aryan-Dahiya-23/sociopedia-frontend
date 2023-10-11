@@ -1,8 +1,6 @@
 import { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom"; 
-import Header from "../components/Header/Header";
-import Navigation from "../components/Navigation/Navigation";
-import UserProfile from "../components/UserProfile/UserProfile";
+import {Header, Navigation, UserProfile } from "./index"
 import { AuthContext } from "../contexts/AuthContext";
 
 const UserProfilePage = () => {

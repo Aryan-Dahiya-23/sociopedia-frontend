@@ -1,5 +1,4 @@
-import Header from "../components/Header/Header";
-import SignIn from "../components/SignIn/SignIn";
+import { Header , SignIn } from "./index"
 
 const SignInPage = () => {
 

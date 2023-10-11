@@ -2,12 +2,8 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import {Header, NewPost, Posts, Navigation, Pulse } from "./index"
 import { AuthContext } from "../contexts/AuthContext";
-import Header from "../components/Header/Header";
-import NewPost from "../components/NewPost/NewPost";
-import Posts from "../components/Posts/Posts";
-import Navigation from "../components/Navigation/Navigation";
-import Pulse from "../components/Animations/Pulse";
 
 const HomePage = () => {
 
