@@ -57,9 +57,9 @@ const Navigation = () => {
         // <div className="bg-white fixed w-full bottom-0 h-10 md:h-[360px] lg:h-auto lg:w-[15%] lg:bottom-auto lg:mt-[4%] lg:ml-[7.5%] lg:rounded-lg">
         // <div className="bg-white fixed w-full bottom-0 h-10 md:h-[360px] lg:relative lg:h-auto lg:w-[15%]  lg:mt-[5%] lg:ml-[7.5%] lg:rounded-lg">
 
-        <div className="bg-white fixed w-full bottom-0 h-10 md:h-[360px] lg:absolute lg:max-h-64 lg:w-[15%] lg:top-40 lg:left-28 lg:rounded-lg">
+        <div className="bg-white flex justify-center items-center fixed w-full h-12 px-2 border-t border-secondary-400 bottom-0 md:h-[360px] lg:absolute lg:max-h-64 lg:w-[15%] lg:p-0  lg:top-40 lg:left-28 lg:rounded-lg lg:border-none">
 
-            <ul className="flex flex-row justify-between items-center lg:justify-start lg:items-start lg:ml-4 lg:py-2 lg:flex-col">
+            <ul className="w-full flex flex-row justify-between items-center lg:justify-start lg:items-start lg:ml-4 lg:py-2 lg:flex-col">
 
                 {NavigationData.map((item, index) => {
 
