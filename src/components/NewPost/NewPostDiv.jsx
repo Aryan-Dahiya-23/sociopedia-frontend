@@ -7,7 +7,7 @@ import AttachFileIcon from "@mui/icons-material/AttachFile";
 import MicNoneOutlinedIcon from "@mui/icons-material/MicNoneOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import { AuthContext } from "../../contexts/AuthContext";
-import LoadingIndicator from "../UI/loadingIndicator";
+import LoadingIndicator from "../UI/LoadingIndicator";
 
 const NewPostDiv = () => {
     const { newPostDiv, setNewPostDiv } = useContext(AuthContext);
