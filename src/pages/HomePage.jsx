@@ -11,12 +11,11 @@ const HomePage = () => {
     const { userId, setUserId } = useContext(AuthContext);
     const { user, setUser } = useContext(AuthContext);
     const { posts, setPosts } = useContext(AuthContext);
-    const [tempPosts, setTempPosts] = useState();
 
     const VITE_URL = import.meta.env.VITE_URL;
 
     useEffect(() => {
-        const delay = 1500;
+        const delay = 1000;
 
         const fetchPostsDelayed = async () => {
             if (!loggedIn) {
