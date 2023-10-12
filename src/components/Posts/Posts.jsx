@@ -287,7 +287,7 @@ const Posts = ({ posts: propPosts, mt }) => {
                             <img src={post.createdBy.profileImageUrl} className="w-12 h-12 rounded-full object-cover" alt="" />
                             <div className="flex flex-col hover:text-secondary-700">
                                 <span>{post.createdBy.name}</span>
-                                <span className="text-sm">{calculateDaysAgo(post.createdAt)}</span>
+                                <span className="text-xs lg:text-sm">{calculateDaysAgo(post.createdAt)}</span>
                             </div>
                         </div>
 
