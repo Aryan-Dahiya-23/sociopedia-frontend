@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import axios from "axios";
 import Search from "../Search/Search";
@@ -10,6 +10,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import ChatIcon from "@mui/icons-material/Chat";
 
 const Header = () => {
+
+  const navigate = useNavigate();
+
   const { loggedIn, setLoggedIn } = useContext(AuthContext);
   const { user, setUser } = useContext(AuthContext);
   const { userEmail, setUserEmail } = useContext(AuthContext);
@@ -41,9 +44,9 @@ const Header = () => {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`
             },
-            withCredentials: true 
+            withCredentials: true
           });
-          
+
           if (response.data) {
             const { email, _id } = response.data;
             setUserId(_id);
@@ -61,7 +64,12 @@ const Header = () => {
   }, []);
 
   const handleSearch = () => {
-    setSearch(true);
+    if (!loggedIn) {
+      alert("Please login first");
+      navigate("/signin");
+    } else {
+      setSearch(true);
+    }
   };
 
   return (

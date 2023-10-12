@@ -53,27 +53,22 @@ const SignUp = () => {
         e.preventDefault();
 
         const formData = new FormData();
+        let imageUrl = VITE_URL + "/uploads/emptyprofile.png";
 
-        // formData.append("profileImage", profileImage);
+        if (profileImage) {
+            formData.append("image", profileImage);
 
-        formData.append("image", profileImage);
-
-        // formData.append("fName", fName);
-        // formData.append("lName", lName);
-        // formData.append("email", email);
-        // formData.append("username", username);
-        // formData.append("password", password);
-
-        const imgbbKey = "2297152e80e8b3ceddce22a21d30a769";
-        const imgbbResponse = await fetch(
-            `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
-            {
-                method: "POST",
-                body: formData,
-            }
-        );
-        const imgbbData = await imgbbResponse.json();
-        const imageUrl = imgbbData.data.url;
+            const imgbbKey = "2297152e80e8b3ceddce22a21d30a769";
+            const imgbbResponse = await fetch(
+                `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
+                {
+                    method: "POST",
+                    body: formData,
+                }
+            );
+            const imgbbData = await imgbbResponse.json();
+            imageUrl = imgbbData.data.url;
+        }
 
         let userData = {
             fName: fName,
@@ -114,7 +109,6 @@ const SignUp = () => {
         let hash = 0;
         let i;
 
-        /* eslint-disable no-bitwise */
         for (i = 0; i < string.length; i += 1) {
             hash = string.charCodeAt(i) + ((hash << 5) - hash);
         }
@@ -125,7 +119,6 @@ const SignUp = () => {
             const value = (hash >> (i * 8)) & 0xff;
             color += `00${value.toString(16)}`.slice(-2);
         }
-        /* eslint-enable no-bitwise */
 
         return color;
     }
@@ -161,7 +154,7 @@ const SignUp = () => {
                                 onChange={handleProfileImage}
                             />
 
-                            {fName && lName && !profileImage ? (
+                            {/* {fName && lName && !profileImage ? (
                                 <Avatar
                                     {...stringAvatar(fName + " " + lName)}
                                     alt="User"
@@ -174,7 +167,14 @@ const SignUp = () => {
                                     sx={{ width: 150, height: 150 }}
                                     className={`m-auto ${hover ? "opacity-70" : ""} `}
                                 />
-                            )}
+                            )} */}
+
+                            <Avatar
+                                alt="User"
+                                src={profileImage ? URL.createObjectURL(profileImage) : ""}
+                                sx={{ width: 150, height: 150 }}
+                                className={`m-auto ${hover ? "opacity-70" : ""} `}
+                            />
 
                             <div
                                 className={`absolute inset-0 flex justify-center items-center font-semibold ${profileImage ? "text-white" : "text-primary-500"

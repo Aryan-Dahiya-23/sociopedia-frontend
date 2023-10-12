@@ -36,7 +36,7 @@ const UserProfile = () => {
         }
 
         fetchData();
-    }, []);
+    }, [userProfileId]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -54,7 +54,7 @@ const UserProfile = () => {
         }
 
         fetchData();
-    }, []);
+    }, [userProfileId]);
 
     useEffect(() => {
 
