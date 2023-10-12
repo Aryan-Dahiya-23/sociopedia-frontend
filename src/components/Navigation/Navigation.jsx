@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -14,6 +14,8 @@ const Navigation = () => {
     const { loggedIn, setLoggedIn } = useContext(AuthContext);
     const { posts, setPosts } = useContext(AuthContext);
     const { newPostDiv, setNewPostDiv } = useContext(AuthContext);
+
+    const isMobileScreen = () => window.innerWidth <= 768;
 
     const VITE_URL = import.meta.env.VITE_URL;
 
@@ -55,6 +57,8 @@ const Navigation = () => {
         navigate("/signin");
     };
 
+    // console.log("screen: " + isMobileScreen);
+
     //
 
     return (
@@ -83,10 +87,10 @@ const Navigation = () => {
                                 onClick={loginAlert}
                             >
                                 <Link to="/signin">
-                                    {item.icon}
-                                    <span className="hidden lg:ml-3 lg:inline-block">
-                                        {item.title}
-                                    </span>
+                                    <div className="flex flex-col space-y-2 lg:flex-row lg:space-y-0">
+                                        <div className="m-auto">{item.icon}</div>
+                                        <span className={`${isMobileScreen() && "text-xs"} lg:ml-3`}>{item.title}</span>
+                                    </div>
                                 </Link>
                             </li>
                         );
@@ -100,8 +104,10 @@ const Navigation = () => {
                                 onClick={handleLogout}
                             >
                                 <Link to={item.path}>
-                                    {item.icon}
-                                    <span className="hidden lg:ml-3 lg:inline">{item.title}</span>
+                                    <div className="flex flex-col space-y-2 lg:flex-row lg:space-y-0">
+                                        <div className="m-auto">{item.icon}</div>
+                                        <span className={`${isMobileScreen() && "text-xs"} lg:ml-3`}>{item.title}</span>
+                                    </div>
                                 </Link>
                             </li>
                         );
@@ -114,10 +120,10 @@ const Navigation = () => {
                                 className="icons cursor-pointer lg:px-1.5 lg:py-2.5 lg:rounded-xl lg:hover:bg-secondary-50"
                                 onClick={handleClick}
                             >
-                                {/* <Link to={item.path}> */}
-                                {item.icon}
-                                <span className="hidden lg:ml-3 lg:inline">{item.title}</span>
-                                {/* </Link> */}
+                                <div className="flex flex-col space-y-2 lg:flex-row lg:space-y-0">
+                                    <div className="m-auto">{item.icon}</div>
+                                    <span className={`${isMobileScreen() && "text-xs"} lg:ml-3`}>{item.title}</span>
+                                </div>
                             </li>
                         );
                     }
@@ -128,8 +134,10 @@ const Navigation = () => {
                             className="icons lg:px-1.5 lg:py-2.5 lg:rounded-xl lg:hover:bg-secondary-50"
                         >
                             <Link to={item.path}>
-                                {item.icon}
-                                <span className="hidden lg:ml-3 lg:inline">{item.title}</span>
+                                <div className="flex flex-col space-y-2 lg:flex-row lg:space-y-0">
+                                    <div className="m-auto">{item.icon}</div>
+                                    <span className={`${isMobileScreen() && "text-xs"} lg:ml-3`}>{item.title}</span>
+                                </div>
                             </Link>
                         </li>
                     );
