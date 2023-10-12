@@ -101,7 +101,8 @@ const NewPostDiv = () => {
     return (
         // <div className="bg-white absolute h-full w-full z-50 left-1/2 transform -translate-x-1/2 rounded-xl lg:h-[70%] lg:w-2/4 lg:top-20">
 
-        <div className="bg-white fixed h-full top-0 w-full z-[9999] animate-slide-in rounded-xl lg:animate-none lg:transform lg:-translate-x-1/2 lg:h-[80%] lg:w-7/12 lg:left-1/2 lg:top-20">
+        <div className="bg-white fixed h-full top-0 overflow-y-auto w-full z-[9999] animate-slide-in rounded-xl lg:animate-none lg:transform lg:-translate-x-1/2 lg:h-[80%] lg:w-7/12 lg:left-1/2 lg:top-20">
+           
             <div className="w-[95%] h-full m-auto pt-2 pb-2">
                 <div className="flex flex-row justify-between m-auto hover:cursor-pointer">
                     <div className="flex flex-row space-x-2 p-1 rounded-lg hover:bg-secondary-100">
@@ -129,10 +130,7 @@ const NewPostDiv = () => {
                     </div>
                 </div>
 
-                <div
-                    className={`max-h-[600px] mt-4 overflow-y-auto ${selectedFile ? "lg:max-h-[350px]" : "lg:max-h-[275px]"
-                        }`}
-                >
+                <div className={`max-h-[600px] mt-4 overflow-y-auto ${selectedFile ? "lg:max-h-[350px]" : "lg:max-h-[275px]"}`}>
                     <div className="flex flex-col w-full gap-2 p-1.5">
                         <textarea
                             id="caption-textarea"
@@ -152,10 +150,7 @@ const NewPostDiv = () => {
                     </div>
                 </div>
 
-                <div
-                    className={`flex flex-row space-x-5 mt-5 lg:absolute lg:bottom-[107.5px] ${changed ? "lg:hidden" : ""
-                        }`}
-                >
+                <div className={`flex flex-row space-x-5 mt-5 lg:absolute lg:bottom-[107.5px] ${changed ? "lg:hidden" : ""}`}>
                     <div className="bg-secondary-50 p-3 rounded-3xl hover:cursor-pointer hover:shadow-lg">
                         <label>
                             <input
@@ -212,8 +207,7 @@ const NewPostDiv = () => {
                         {!isLoading ?
                             <button
                                 className="bg-primary-500 ml-4 text-white pt-2 pb-2 pl-5 pr-5 rounded-full hover:opacity-80"
-                                onClick={handlePost}
-                            >
+                                onClick={handlePost}>
                                 Post
                             </button>
                             :
@@ -227,10 +221,8 @@ const NewPostDiv = () => {
                 <div className="hidden w-[95%] bottom-20 lg:absolute lg:inline-block border-[.5px] border-gray-300"></div>
 
                 {!isLoading ?
-                    <button
-                        className="hidden bg-primary-500 text-white pt-1 pb-1 pl-4 pr-4 rounded-full lg:inline-block lg:absolute lg:bottom-6 lg:right-12 hover:opacity-80"
-                        onClick={handlePost}
-                    >
+                    <button className="hidden bg-primary-500 text-white pt-1 pb-1 pl-4 pr-4 rounded-full lg:inline-block lg:absolute lg:bottom-6 lg:right-12 hover:opacity-80"
+                        onClick={handlePost} >
                         Post
                     </button>
                     :
@@ -239,10 +231,7 @@ const NewPostDiv = () => {
                     </div>
                 }
 
-                <div
-                    className="absolute p-2 top-1 right-1 rounded-full cursor-pointer hover:bg-secondary-50"
-                    onClick={handleClose}
-                >
+                <div className="absolute p-2 top-1 right-1 rounded-full cursor-pointer hover:bg-secondary-50" onClick={handleClose}>
                     <CloseIcon fontSize="medium" />
                 </div>
             </div>
