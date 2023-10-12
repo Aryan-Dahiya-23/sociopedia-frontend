@@ -81,7 +81,7 @@ const Friends = () => {
     }
 
     return (
-        <div className="bg-white w-[95%] m-auto mt-7 mb-10 p-4 space-y-4 rounded-xl lg:w-2/5 lg:ml-[32.5%] lg:mt-16">
+        <div className="bg-white w-[95%] m-auto mt-7 mb-20 p-4 space-y-4 rounded-xl lg:w-2/5 lg:ml-[32.5%] lg:mt-16">
 
             {friends.map((friend) => (
                 <div key={friend._id} className="flex flex-row justify-between">
