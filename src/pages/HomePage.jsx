@@ -15,29 +15,6 @@ const HomePage = () => {
 
     const VITE_URL = import.meta.env.VITE_URL;
 
-    // useEffect(() => {
-
-    //     const fetchPosts = async () => {
-    //         if (!loggedIn) {
-    //             try {
-    //                 const response = await axios.get(
-    //                     `http://localhost:4000/fetchposts?id=${0}`
-    //                 );
-    //                 if (response.status === 200) {
-    //                     setPosts(response.data);
-    //                 } else {
-    //                     alert("Error in loading posts");
-    //                 }
-    //             } catch (err) {
-    //                 alert("Error in loading posts");
-    //             }
-    //         }
-    //     };
-
-    //     fetchPosts();
-
-    // }, []);  
-
     useEffect(() => {
         const delay = 1500;
 

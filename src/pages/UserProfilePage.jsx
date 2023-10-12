@@ -1,9 +1,15 @@
 import { useEffect, useContext } from "react";
-import { useParams } from "react-router-dom"; 
+import { useParams, useLocation } from "react-router-dom"; 
 import {Header, Navigation, UserProfile } from "./index"
 import { AuthContext } from "../contexts/AuthContext";
 
 const UserProfilePage = () => {
+
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scroll(0, 0);
+      }, [pathname])
 
     const { user } = useContext(AuthContext);
     const { userProfileId, setUserProfileId } = useContext(AuthContext);
