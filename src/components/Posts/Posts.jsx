@@ -299,9 +299,9 @@ const Posts = ({ posts: propPosts, mt }) => {
                     }
 
                     <div className="w-full flex flex-row justify-between m-auto space-x-2.5">
-                        <img src={user ? user.profileImageUrl : VITE_URL + "/uploads/emptyprofile.png"} className="w-12 h-12 rounded-full object-cover" alt="" />
+                        <img src={user ? user.profileImageUrl : VITE_URL + "/uploads/emptyprofile.png"} className="w-12 h-12 object-cover rounded-full" alt="" />
 
-                        <div className="relative w-[500px] md:w-[675px] lg:w-[500px]">
+                        <div className="relative w-[280px] md:w-[675px] lg:w-[500px]">
 
                             <input type="text"
                                 onChange={handleCommentContent}
@@ -328,7 +328,7 @@ const Posts = ({ posts: propPosts, mt }) => {
                             {post.comments.map((comment) => (
                                 <div key={comment._id}>
 
-                                    <div className="flex flex-row pb-1 space-x-2 border-b border-gray-200">
+                                    <div className="flex flex-row pb-1 space-x-4 border-b border-gray-200">
                                         <img src={comment.profileImageUrl} alt="User Profile" className="w-9 h-9 object-cover rounded-full" />
 
                                         <div className="flex flex-row space-x-4 m-auto">

@@ -35,7 +35,7 @@ const NewPost = () => {
 
                 <div className="w-[97.5%] flex flex-row justify-between m-auto space-x-2.5 hover:cursor-pointer">
                     <img src={user ? user.profileImageUrl : VITE_URL + "/uploads/emptyprofile.png"} className="w-12 h-12 rounded-full object-cover" alt="" />
-                    <input type="text" placeholder="what's on your mind..." className="bg-secondary-50 h-12 w-[500px] rounded-3xl pl-2.5 md:w-[675px] lg:w-[500px] focus:outline-none cursor-pointer" onClick={handleClick} />
+                    <input type="text" placeholder="what's on your mind..." className="bg-secondary-50 h-12 w-[285px] rounded-3xl pl-2.5 md:w-[675px] lg:w-[500px] focus:outline-none cursor-pointer" onClick={handleClick} />
                 </div>
 
                 <div className="bg-secondary-100 h-[1px]"></div>
