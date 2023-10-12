@@ -14,6 +14,7 @@ const SignUp = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [hover, setHover] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const VITE_URL = import.meta.env.VITE_URL;
 
@@ -51,6 +52,12 @@ const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        console.log("clicked");
+
+        if(!fName || !lName || !email || !username || !password) return alert("Please fill the entries properly")
+
+        setIsLoading(true)
 
         const formData = new FormData();
         let imageUrl = VITE_URL + "/uploads/emptyprofile.png";
@@ -103,6 +110,8 @@ const SignUp = () => {
         } catch (error) {
             alert("An error occurred during registration, Please Try Again!");
         }
+
+        setIsLoading(false);
     };
 
     function stringToColor(string) {
@@ -231,12 +240,16 @@ const SignUp = () => {
                     </div>
                 </form>
 
-                <button
-                    className="bg-primary-400 w-full py-2 text-white rounded-md hover:bg-primary-300"
-                    onClick={handleSubmit}
-                >
-                    Sign Up
-                </button>
+                {isLoading ?
+                    <button className="bg-primary-400 w-full py-2 text-white rounded-md hover:bg-primary-300">
+                        Processing...
+                    </button>
+                    :
+                    <button className="bg-primary-400 w-full py-2 text-white rounded-md hover:bg-primary-300" onClick={handleSubmit} >
+                        Sign Up
+                    </button>
+                }
+
             </div>
 
             <div className="w-11/12 py-4 text-primary-400 text-sm  hover:text-primary-500">
