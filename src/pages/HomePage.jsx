@@ -2,8 +2,9 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import {Header, NewPost, Posts, Navigation, Pulse } from "./index"
+import { Header, NewPost, Posts, Navigation, Pulse } from "./index"
 import { AuthContext } from "../contexts/AuthContext";
+import LoadingIndicator from "../components/UI/loadingIndicator";
 
 const HomePage = () => {
 
@@ -36,7 +37,7 @@ const HomePage = () => {
 
     //     fetchPosts();
 
-    // }, []);
+    // }, []);  
 
     useEffect(() => {
         const delay = 1500;

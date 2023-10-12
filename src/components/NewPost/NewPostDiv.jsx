@@ -7,6 +7,7 @@ import AttachFileIcon from "@mui/icons-material/AttachFile";
 import MicNoneOutlinedIcon from "@mui/icons-material/MicNoneOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import { AuthContext } from "../../contexts/AuthContext";
+import LoadingIndicator from "../UI/loadingIndicator";
 
 const NewPostDiv = () => {
     const { newPostDiv, setNewPostDiv } = useContext(AuthContext);
@@ -16,6 +17,7 @@ const NewPostDiv = () => {
     const [changed, setChanged] = useState(false);
     const [caption, setCaption] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const VITE_URL = import.meta.env.VITE_URL;
 
@@ -44,6 +46,8 @@ const NewPostDiv = () => {
         if (!caption && !selectedFile) {
             return alert("The Post is Empty!");
         }
+
+        setIsLoading(true);
 
         const formData = new FormData();
 
@@ -76,6 +80,7 @@ const NewPostDiv = () => {
                 postData,
                 {}
             );
+            setIsLoading(false)
             if (response.status === 200) {
                 alert("Post successful");
                 setNewPostDiv(false);
@@ -204,23 +209,35 @@ const NewPostDiv = () => {
                     </div>
 
                     <div className="lg:hidden m-auto">
-                        <button
-                            className="bg-primary-500 ml-4 text-white pt-2 pb-2 pl-5 pr-5 rounded-full hover:opacity-80"
-                            onClick={handlePost}
-                        >
-                            Post
-                        </button>
+                        {!isLoading ?
+                            <button
+                                className="bg-primary-500 ml-4 text-white pt-2 pb-2 pl-5 pr-5 rounded-full hover:opacity-80"
+                                onClick={handlePost}
+                            >
+                                Post
+                            </button>
+                            :
+                            <div className="ml-4 pt-2 pb-2 pl-5 pr-5">
+                                <LoadingIndicator />
+                            </div>
+                        }
                     </div>
                 </div>
 
                 <div className="hidden w-[95%] bottom-20 lg:absolute lg:inline-block border-[.5px] border-gray-300"></div>
 
-                <button
-                    className="hidden bg-primary-500 text-white pt-1 pb-1 pl-4 pr-4 rounded-full lg:inline-block lg:absolute lg:bottom-6 lg:right-12 hover:opacity-80"
-                    onClick={handlePost}
-                >
-                    Post
-                </button>
+                {!isLoading ?
+                    <button
+                        className="hidden bg-primary-500 text-white pt-1 pb-1 pl-4 pr-4 rounded-full lg:inline-block lg:absolute lg:bottom-6 lg:right-12 hover:opacity-80"
+                        onClick={handlePost}
+                    >
+                        Post
+                    </button>
+                    :
+                    <div className="hidden absolute bottom-6 right-12 lg:inline-block">
+                        <LoadingIndicator />
+                    </div>
+                }
 
                 <div
                     className="absolute p-2 top-1 right-1 rounded-full cursor-pointer hover:bg-secondary-50"

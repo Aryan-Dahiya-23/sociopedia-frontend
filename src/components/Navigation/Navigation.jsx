@@ -1,13 +1,12 @@
 /* eslint-disable no-unused-vars */
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { NavigationData } from "./NavigationData.jsx";
-import "../../main.css"
+import "../../main.css";
 
 const Navigation = () => {
-
     const navigate = useNavigate();
 
     const { user, setUser } = useContext(AuthContext);
@@ -25,17 +24,21 @@ const Navigation = () => {
         } else {
             setNewPostDiv(true);
         }
-    }
+    };
 
     const handleLogout = async () => {
         try {
-
             console.log("clicked");
-            document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            document.cookie =
+                "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
-            await axios.post(VITE_URL + "/logout", {}, {
-                withCredentials: true
-            });
+            await axios.post(
+                VITE_URL + "/logout",
+                {},
+                {
+                    withCredentials: true,
+                }
+            );
 
             setLoggedIn(false);
             setPosts();
@@ -45,12 +48,12 @@ const Navigation = () => {
         } catch (error) {
             console.error("Error during logout:", error);
         }
-    }
+    };
 
     const loginAlert = () => {
         alert("Please login first!");
         navigate("/signin");
-    }
+    };
 
     //
 
@@ -60,29 +63,42 @@ const Navigation = () => {
         // <div className="bg-white fixed w-full bottom-0 h-10 md:h-[360px] lg:relative lg:h-auto lg:w-[15%]  lg:mt-[5%] lg:ml-[7.5%] lg:rounded-lg">
 
         <div className="bg-white flex justify-center items-center fixed w-full h-14 px-4 border-t border-secondary-200 bottom-0 md:h-[360px] lg:absolute lg:max-h-64 lg:w-[15%] lg:p-0  lg:top-40 lg:left-28 lg:rounded-lg lg:border-none">
-
             <ul className="w-full flex flex-row justify-between items-center lg:justify-start lg:items-start lg:ml-4 lg:py-2 lg:flex-col">
-
                 {NavigationData.map((item, index) => {
-
-                    if (loggedIn && item.path === "/signin" || !loggedIn && item.title === "Logout") {
+                    if (
+                        (loggedIn && item.path === "/signin") ||
+                        (!loggedIn && item.title === "Logout")
+                    ) {
                         return null;
                     }
 
-                    if (!loggedIn && (item.path === "/profile" || item.path === "/notifications")) {
+                    if (
+                        !loggedIn &&
+                        (item.path === "/profile" || item.path === "/notifications")
+                    ) {
                         return (
-                            <li key={index} className="icons lg:px-1.5 lg:py-2.5 lg:rounded-xl lg:hover:bg-secondary-50" onClick={loginAlert}>
+                            <li
+                                key={index}
+                                className="icons lg:px-1.5 lg:py-2.5 lg:rounded-xl lg:hover:bg-secondary-50"
+                                onClick={loginAlert}
+                            >
                                 <Link to="/signin">
                                     {item.icon}
-                                    <span className="hidden lg:ml-3 lg:inline-block">{item.title}</span>
+                                    <span className="hidden lg:ml-3 lg:inline-block">
+                                        {item.title}
+                                    </span>
                                 </Link>
                             </li>
-                        )
+                        );
                     }
 
                     if (item.title === "Logout") {
                         return (
-                            <li key={index} className="icons lg:px-1.5 lg:py-2.5 lg:rounded-xl lg:hover:bg-secondary-50" onClick={handleLogout}>
+                            <li
+                                key={index}
+                                className="icons lg:px-1.5 lg:py-2.5 lg:rounded-xl lg:hover:bg-secondary-50"
+                                onClick={handleLogout}
+                            >
                                 <Link to={item.path}>
                                     {item.icon}
                                     <span className="hidden lg:ml-3 lg:inline">{item.title}</span>
@@ -93,17 +109,24 @@ const Navigation = () => {
 
                     if (item.title === "Create Post") {
                         return (
-                            <li key={index} className="icons cursor-pointer lg:px-1.5 lg:py-2.5 lg:rounded-xl lg:hover:bg-secondary-50" onClick={handleClick}>
+                            <li
+                                key={index}
+                                className="icons cursor-pointer lg:px-1.5 lg:py-2.5 lg:rounded-xl lg:hover:bg-secondary-50"
+                                onClick={handleClick}
+                            >
                                 {/* <Link to={item.path}> */}
-                                    {item.icon}
-                                    <span className="hidden lg:ml-3 lg:inline">{item.title}</span>
+                                {item.icon}
+                                <span className="hidden lg:ml-3 lg:inline">{item.title}</span>
                                 {/* </Link> */}
                             </li>
                         );
                     }
 
                     return (
-                        <li key={index} className="icons lg:px-1.5 lg:py-2.5 lg:rounded-xl lg:hover:bg-secondary-50">
+                        <li
+                            key={index}
+                            className="icons lg:px-1.5 lg:py-2.5 lg:rounded-xl lg:hover:bg-secondary-50"
+                        >
                             <Link to={item.path}>
                                 {item.icon}
                                 <span className="hidden lg:ml-3 lg:inline">{item.title}</span>
@@ -111,14 +134,11 @@ const Navigation = () => {
                         </li>
                     );
                 })}
-
             </ul>
-
         </div>
     );
-}
+};
 
 export default Navigation;
-
 
 // bg-white mt-[4%] ml-[7.5%] md:relative md:w-[15%] md:rounded-lg
