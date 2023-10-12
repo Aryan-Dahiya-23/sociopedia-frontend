@@ -230,7 +230,7 @@ const Posts = ({ posts: propPosts, mt }) => {
             alert("Please login first!");
             navigate("/signin");
         }
-        else if(user._id !== id) {
+        else if (user._id !== id) {
             navigate(`/profile/${id}`);
         }
     }
@@ -259,6 +259,21 @@ const Posts = ({ posts: propPosts, mt }) => {
         navigate("/signin");
     }
 
+    const calculateDaysAgo = (createdAt) => {
+        const createdAtDate = new Date(createdAt);
+        const currentDate = new Date();
+        const timeDifference = currentDate - createdAtDate;
+        const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+        if (daysAgo === 0) {
+            return "Today"
+        } else if (daysAgo === 1) {
+            return `${daysAgo} day ago`
+        } else {
+            return `${daysAgo} days ago`;
+        }
+    }
+
     return (
 
         <div className={`w-[95%] m-auto mt-[7.5%] mb-12 space-y-5 lg:w-2/5 lg:ml-[32.5%] lg:${mt} lg:mt-44`}>
@@ -269,8 +284,11 @@ const Posts = ({ posts: propPosts, mt }) => {
                     <div className="flex flex-row justify-between">
 
                         <div className="flex flex-row space-x-2.5 hover:cursor-pointer" onClick={() => handleUserProfile(post.createdBy.id)}>
-                            {<img src={post.createdBy.profileImageUrl} className="w-12 h-12 rounded-full object-cover" alt="" />}
-                            {<span className="m-auto hover:border-b-2 hover:border-primary-300">{post.createdBy.name}</span>}
+                            <img src={post.createdBy.profileImageUrl} className="w-12 h-12 rounded-full object-cover" alt="" />
+                            <div className="flex flex-col hover:text-secondary-700">
+                                <span>{post.createdBy.name}</span>
+                                <span className="text-sm">{calculateDaysAgo(post.createdAt)}</span>
+                            </div>
                         </div>
 
                         <div className="bg-primary-100 border rounded-full mt-auto mb-auto p-1 text-primary-500 hover:text-primary-400">
