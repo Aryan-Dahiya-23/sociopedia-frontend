@@ -135,7 +135,7 @@ const SignUp = () => {
     }
 
     return (
-        <div className="bg-white flex flex-col items-center w-[95%] m-auto mt-16 rounded-lg lg:w-1/2 lg:mt-6">
+        <div className="bg-white flex flex-col items-center w-[95%] m-auto mt-6 rounded-lg lg:w-1/2 lg:mt-6">
             <div className="w-11/12 text-[.75rem] font-semibold py-4 md:text-base">
                 Welcome To Sociopedia, the Social Media for Sociopaths!
             </div>
