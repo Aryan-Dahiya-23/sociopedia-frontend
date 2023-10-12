@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Header, NewPost, Posts, Navigation, Pulse } from "./index"
 import { AuthContext } from "../contexts/AuthContext";
-import LoadingIndicator from "../components/UI/loadingIndicator";
 
 const HomePage = () => {
 
