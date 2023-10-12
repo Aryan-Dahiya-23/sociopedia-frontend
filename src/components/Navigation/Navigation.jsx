@@ -87,7 +87,7 @@ const Navigation = () => {
                                 onClick={loginAlert}
                             >
                                 <Link to="/signin">
-                                    <div className="flex flex-col space-y-2 lg:flex-row lg:space-y-0">
+                                    <div className="flex flex-col space-y-1 lg:flex-row lg:space-y-0">
                                         <div className="m-auto">{item.icon}</div>
                                         <span className={`${isMobileScreen() && "text-xs"} lg:ml-3`}>{item.title}</span>
                                     </div>
@@ -104,7 +104,7 @@ const Navigation = () => {
                                 onClick={handleLogout}
                             >
                                 <Link to={item.path}>
-                                    <div className="flex flex-col space-y-2 lg:flex-row lg:space-y-0">
+                                    <div className="flex flex-col space-y-1 lg:flex-row lg:space-y-0">
                                         <div className="m-auto">{item.icon}</div>
                                         <span className={`${isMobileScreen() && "text-xs"} lg:ml-3`}>{item.title}</span>
                                     </div>
@@ -120,7 +120,7 @@ const Navigation = () => {
                                 className="icons cursor-pointer lg:px-1.5 lg:py-2.5 lg:rounded-xl lg:hover:bg-secondary-50"
                                 onClick={handleClick}
                             >
-                                <div className="flex flex-col space-y-2 lg:flex-row lg:space-y-0">
+                                <div className="flex flex-col space-y-1 lg:flex-row lg:space-y-0">
                                     <div className="m-auto">{item.icon}</div>
                                     <span className={`${isMobileScreen() && "text-xs"} lg:ml-3`}>{item.title}</span>
                                 </div>
@@ -134,7 +134,7 @@ const Navigation = () => {
                             className="icons lg:px-1.5 lg:py-2.5 lg:rounded-xl lg:hover:bg-secondary-50"
                         >
                             <Link to={item.path}>
-                                <div className="flex flex-col space-y-2 lg:flex-row lg:space-y-0">
+                                <div className="flex flex-col space-y-1 lg:flex-row lg:space-y-0">
                                     <div className="m-auto">{item.icon}</div>
                                     <span className={`${isMobileScreen() && "text-xs"} lg:ml-3`}>{item.title}</span>
                                 </div>
