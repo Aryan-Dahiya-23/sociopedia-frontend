@@ -61,7 +61,7 @@ const NewPostDiv = () => {
 
         if (selectedFile) {
             formData.append("image", selectedFile);
-            const imgbbKey = "2297152e80e8b3ceddce22a21d30a769";
+            const imgbbKey = import.meta.env.VITE_BB_SECRET_KEY;
             const imgbbResponse = await fetch(
                 `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
                 {

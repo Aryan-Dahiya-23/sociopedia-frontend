@@ -57,9 +57,12 @@ const Navigation = () => {
         navigate("/signin");
     };
 
-    // console.log("screen: " + isMobileScreen);
-
-    //
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }
 
     return (
         // Temporary Height for tablets would need to remove that before production -> md:h[360px]...
@@ -131,6 +134,7 @@ const Navigation = () => {
                     return (
                         <li
                             key={index}
+                            onClick={scrollToTop}
                             className="icons lg:px-1.5 lg:py-2.5 lg:rounded-xl lg:hover:bg-secondary-50"
                         >
                             <Link to={item.path}>
@@ -148,5 +152,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
-// bg-white mt-[4%] ml-[7.5%] md:relative md:w-[15%] md:rounded-lg

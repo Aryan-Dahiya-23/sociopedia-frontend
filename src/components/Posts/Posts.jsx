@@ -260,15 +260,19 @@ const Posts = ({ posts: propPosts, mt }) => {
     }
 
     const calculateDaysAgo = (createdAt) => {
+
         const createdAtDate = new Date(createdAt);
         const currentDate = new Date();
-        const timeDifference = currentDate - createdAtDate;
-        const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+        const createdAtTimestamp = createdAtDate.getDate() + createdAtDate.getMonth() + createdAtDate.getFullYear();
+        const currentTimestamp = currentDate.getDate() + currentDate.getMonth() + currentDate.getFullYear();
+
+        const daysAgo = currentTimestamp - createdAtTimestamp
 
         if (daysAgo === 0) {
             return "Today"
         } else if (daysAgo === 1) {
-            return `${daysAgo} day ago`
+            return "Yesterday"
         } else {
             return `${daysAgo} days ago`;
         }

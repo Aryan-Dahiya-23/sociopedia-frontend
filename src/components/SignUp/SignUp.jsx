@@ -53,30 +53,24 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log("clicked");
-
-        if(!fName || !lName || !email || !username || !password) return alert("Please fill the entries properly")
+        if (!profileImage) return alert("Please choose a profile picture.")
+        if (!fName || !lName || !email || !username || !password) return alert("Please fill the entries properly")
 
         setIsLoading(true)
 
         const formData = new FormData();
-        let imageUrl = VITE_URL + "/uploads/emptyprofile.png";
+        formData.append("image", profileImage);
 
-        if (profileImage) {
-            formData.append("image", profileImage);
-
-            const imgbbKey = "2297152e80e8b3ceddce22a21d30a769";
-            const imgbbResponse = await fetch(
-                `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
-                {
-                    method: "POST",
-                    body: formData,
-                }
-            );
-            const imgbbData = await imgbbResponse.json();
-            imageUrl = imgbbData.data.url;
-        }
-
+        const imgbbKey = import.meta.env.VITE_BB_SECRET_KEY;
+        const imgbbResponse = await fetch(
+            `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
+            {
+                method: "POST",
+                body: formData,
+            }
+        );
+        const imgbbData = await imgbbResponse.json();
+        const imageUrl = imgbbData.data.url;
         let userData = {
             fName: fName,
             lName: lName,
