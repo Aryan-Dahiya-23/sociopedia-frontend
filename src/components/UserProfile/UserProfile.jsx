@@ -137,7 +137,7 @@ const UserProfile = () => {
 
                     {showPosts && posts && <Posts mt="mt-44" posts={posts} />}
                     {showFriends && friends && <Friends />}
-                    {about && <About />}
+                    {about && <About user={user} />}
 
                 </div>
             )}

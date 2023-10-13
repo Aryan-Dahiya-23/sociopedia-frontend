@@ -194,7 +194,7 @@ const Profile = () => {
             {savedPosts && posts && <Posts posts={posts} />}
 
             {showFriends && friends && <Friends />}
-            {about && <About />}
+            {about && <About user={ user }/>}
 
         </div>
 
