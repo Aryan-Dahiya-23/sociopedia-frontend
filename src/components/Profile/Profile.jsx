@@ -40,7 +40,7 @@ const Profile = () => {
 
                     if (response.status === 200) {
                         console.log(response.data);
-                        setIsLoading(false);
+                        // setIsLoading(false);
                         setPosts(response.data);
                     } else {
                         alert("Error in loading posts");
@@ -141,7 +141,7 @@ const Profile = () => {
 
     return (
         <div className="lg:space-y-[400px]">
-           
+
             <div className="bg-white w-[95%] m-auto mt-[7.5%] rounded-xl lg:absolute lg:w-2/5 lg:ml-[32.5%] lg:-top-5">
 
                 <div className="flex flex-col">
@@ -201,8 +201,11 @@ const Profile = () => {
 
             </div>
 
+
             {isLoading &&
                 <div className="max-h-screen w-[95%] m-auto mt-[7.5%] space-y-5 lg:w-2/5 lg:ml-[32.5%] lg:mt-44 ">
+                    <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
+                    <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
                     <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
                     <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
                 </div>

@@ -323,7 +323,7 @@ const Posts = ({ posts: propPosts, mt }) => {
                     <div className="w-full flex flex-row justify-between m-auto space-x-2.5">
                         <img src={user ? user.profileImageUrl : VITE_URL + "/uploads/emptyprofile.png"} className="w-12 h-12 object-cover rounded-full" alt="" />
 
-                        {/* <div className="relative w-[260px] md:w-[675px] lg:w-[500px]">
+                        <div className="relative w-[260px] md:w-[675px] lg:w-[500px]">
 
                             <input type="text"
                                 onChange={handleCommentContent}
@@ -341,9 +341,9 @@ const Posts = ({ posts: propPosts, mt }) => {
                                 </div>
                             }
 
-                        </div> */}
+                        </div>
 
-                        <div className="flex w-[260px] md:w-[675px] lg:w-[500px]">
+                        {/* <div className="flex w-[260px] md:w-[675px] lg:w-[500px]">
                             <div className="flex-grow">
                                 <input
                                     type="text"
@@ -362,7 +362,7 @@ const Posts = ({ posts: propPosts, mt }) => {
                                     <SendOutlinedIcon />
                                 </div>)
                             }
-                        </div>
+                        </div> */}
 
                     </div>
 
