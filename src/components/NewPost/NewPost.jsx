@@ -41,7 +41,7 @@ const NewPost = () => {
                     <input type="text" placeholder="what's on your mind..." className="bg-secondary-50 h-12 w-10/12 rounded-3xl pl-2.5 md:w-[675px] lg:w-[500px] focus:outline-none cursor-pointer" onClick={handleClick} />
                 </div>
 
-                <div className="bg-secondary-100 h-[1px]"></div>
+                <div className="bg-secondary-100 h-[1.1px]"></div>
 
                 <div className="w-[97.5%] flex flex-row space-x-3 justify-between text-xs md:text-sm">
 
