@@ -85,19 +85,6 @@ const HomePage = () => {
                 <Posts posts={posts} />
             }
 
-            {/* {posts ?
-                <Posts posts={posts} />
-                :
-                <div className="max-h-screen w-[95%] m-auto mt-[7.5%] space-y-5 lg:w-2/5 lg:ml-[32.5%] lg:mt-44 ">
-                    <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
-                    <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
-                    <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
-                    <div className="lg:hidden">
-                        <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
-                    </div>
-                </div>
-            } */}
-
             <Navigation />
         </div>
     );
