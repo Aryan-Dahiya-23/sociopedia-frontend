@@ -320,7 +320,7 @@ const Posts = ({ posts: propPosts, mt }) => {
                         <></>
                     }
 
-                    <div className="w-full flex flex-row justify-between m-auto space-x-2.5">
+                    <div className="w-full flex flex-row justify-between m-auto px-1 space-x-2.5 lg:px-1.5">
 
                         <div className="w-2/12 lg:w-auto">
                             <img src={user ? user.profileImageUrl : VITE_URL + "/uploads/emptyprofile.png"} className="w-12 h-12 object-cover rounded-full" alt="" />
