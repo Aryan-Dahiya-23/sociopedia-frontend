@@ -7,6 +7,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import Posts from '../Posts/Posts';
 import About from '../Profile/About';
 import Friends from '../Profile/Friends';
+import Pulse from '../Animations/Pulse';
 
 const UserProfile = () => {
 
@@ -17,15 +18,19 @@ const UserProfile = () => {
     const [showPosts, setShowPosts] = useState(true);
     const [showFriends, setShowFriends] = useState(false);
     const [about, setAbout] = useState(false);
+    const [isLoading, setIsLoading] = useState(false)
+    const [isLoadingFriends, setIsLoadingFriends] = useState(false)
 
     const VITE_URL = import.meta.env.VITE_URL;
 
     useEffect(() => {
         const fetchData = async () => {
+            setIsLoading(true)
             try {
                 const response = await axios.get(`${VITE_URL}/user?id=${userProfileId}`);
 
                 if (response.status === 200) {
+                    setIsLoading(false)
                     setUser(response.data.user);
                 } else {
                     alert("Error In Fetching User");
@@ -61,10 +66,12 @@ const UserProfile = () => {
         const fetchData = async () => {
 
             if (showFriends && user) {
+                setIsLoadingFriends(true)
                 try {
                     const response = await axios.get(`${VITE_URL}/fetchfriends?id=${user._id}`);
 
                     if (response.status === 200) {
+                        setIsLoadingFriends(false)
                         setFriends(response.data);
                     } else {
                         alert("Error in loading posts");
@@ -87,6 +94,18 @@ const UserProfile = () => {
 
     return (
         <>
+        
+            {isLoading &&
+                <div className="bg-white w-[95%] m-auto mt-[7.5%] rounded-xl lg:absolute lg:w-2/5 lg:ml-[32.5%] lg:-top-5">
+                    <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
+                    <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
+                    <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
+                    <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
+                    <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
+                    <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
+                </div>
+            }
+
             {user && posts && (
                 <div className="lg:space-y-[400px]">
                     <div className="bg-white w-[95%] m-auto mt-[7.5%] rounded-xl lg:absolute lg:w-2/5 lg:ml-[32.5%] lg:-top-5">
@@ -134,6 +153,18 @@ const UserProfile = () => {
                         </div>
 
                     </div>
+
+                    {isLoadingFriends &&
+                        <div className="bg-white w-[95%] m-auto mt-7 mb-20 p-4 space-y-4 rounded-xl lg:w-2/5 lg:ml-[32.5%] lg:mt-16">
+                            <Pulse imageHeight="h-10" imageWidth="w-10" height="h-2.5" />
+                            <Pulse imageHeight="h-10" imageWidth="w-10" height="h-2.5" />
+                            <Pulse imageHeight="h-10" imageWidth="w-10" height="h-2.5" />
+                            <div className="hidden lg:inline-block">
+                                <Pulse imageHeight="h-10" imageWidth="w-10" height="h-2.5" />
+                                <Pulse imageHeight="h-10" imageWidth="w-10" height="h-2.5" />
+                            </div>
+                        </div>
+                    }
 
                     {showPosts && posts && <Posts mt="mt-44" posts={posts} />}
                     {showFriends && friends && <Friends />}

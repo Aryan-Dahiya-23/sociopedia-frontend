@@ -11,6 +11,7 @@ const HomePage = () => {
     const { userId, setUserId } = useContext(AuthContext);
     const { user, setUser } = useContext(AuthContext);
     const { posts, setPosts } = useContext(AuthContext);
+    const [isLoading, setIsLoading] = useState(true)
 
     const VITE_URL = import.meta.env.VITE_URL;
 
@@ -25,6 +26,7 @@ const HomePage = () => {
                     );
                     if (response.status === 200) {
                         setPosts(response.data);
+                        setIsLoading(false)
                     } else {
                         alert("Error in loading posts");
                     }
@@ -49,6 +51,7 @@ const HomePage = () => {
                     );
                     if (response.status === 200) {
                         setPosts(response.data);
+                        setIsLoading(false)
                     } else {
                         alert("Error in loading posts");
                     }
@@ -67,9 +70,7 @@ const HomePage = () => {
             <Header />
             <NewPost />
 
-            {posts ?
-                <Posts posts={posts} />
-                :
+            {isLoading &&
                 <div className="max-h-screen w-[95%] m-auto mt-[7.5%] space-y-5 lg:w-2/5 lg:ml-[32.5%] lg:mt-44 ">
                     <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
                     <Pulse imageHeight="h-14" imageWidth="w-14" height="h-4" />
@@ -80,7 +81,11 @@ const HomePage = () => {
                 </div>
             }
 
-            {/* {posts && user ?
+            {posts && !isLoading &&
+                <Posts posts={posts} />
+            }
+
+            {/* {posts ?
                 <Posts posts={posts} />
                 :
                 <div className="max-h-screen w-[95%] m-auto mt-[7.5%] space-y-5 lg:w-2/5 lg:ml-[32.5%] lg:mt-44 ">
