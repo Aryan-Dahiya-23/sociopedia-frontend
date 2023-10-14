@@ -219,9 +219,9 @@ const Profile = () => {
                 </div>
             }
 
-            {showPosts && posts && <Posts mt="mt-44" posts={posts} />}
-            {likedPosts && posts && <Posts posts={posts} />}
-            {savedPosts && posts && <Posts posts={posts} />}
+            {showPosts && posts && !isLoading && <Posts mt="mt-44" posts={posts} />}
+            {likedPosts && posts && !isLoading && <Posts posts={posts} />}
+            {savedPosts && posts && !isLoading && <Posts posts={posts} />}
             {showFriends && friends && <Friends />}
             {about && <About user={user} />}
 
