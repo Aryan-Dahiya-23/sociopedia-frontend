@@ -141,6 +141,7 @@ const Profile = () => {
 
     return (
         <div className="lg:space-y-[400px]">
+           
             <div className="bg-white w-[95%] m-auto mt-[7.5%] rounded-xl lg:absolute lg:w-2/5 lg:ml-[32.5%] lg:-top-5">
 
                 <div className="flex flex-col">

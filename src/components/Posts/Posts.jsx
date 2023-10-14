@@ -323,7 +323,7 @@ const Posts = ({ posts: propPosts, mt }) => {
                     <div className="w-full flex flex-row justify-between m-auto space-x-2.5">
                         <img src={user ? user.profileImageUrl : VITE_URL + "/uploads/emptyprofile.png"} className="w-12 h-12 object-cover rounded-full" alt="" />
 
-                        <div className="relative w-[260px] md:w-[675px] lg:w-[500px]">
+                        {/* <div className="relative w-[260px] md:w-[675px] lg:w-[500px]">
 
                             <input type="text"
                                 onChange={handleCommentContent}
@@ -341,7 +341,29 @@ const Posts = ({ posts: propPosts, mt }) => {
                                 </div>
                             }
 
+                        </div> */}
+
+                        <div className="flex w-[260px] md:w-[675px] lg:w-[500px]">
+                            <div className="flex-grow">
+                                <input
+                                    type="text"
+                                    onChange={handleCommentContent}
+                                    value={comment}
+                                    placeholder="Leave a comment"
+                                    className="bg-secondary-50 h-12 w-full rounded-3xl pl-2.5 pr-12 focus:outline-none"
+                                />
+                            </div>
+                            {user ? (
+                                <div className="flex items-center cursor-pointer -ml-7" onClick={() => handleComment(post)}>
+                                    <SendOutlinedIcon />
+                                </div>
+                            ) : (
+                                <div className="flex items-center cursor-pointer -ml-12" onClick={loginAlert}>
+                                    <SendOutlinedIcon />
+                                </div>)
+                            }
                         </div>
+
                     </div>
 
                     {currentPost === post._id && post.comments.length > 0 &&
