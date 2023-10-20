@@ -5,6 +5,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import PersonRemoveOutlinedIcon from '@mui/icons-material/PersonRemoveOutlined';
 import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
@@ -77,6 +78,8 @@ const Posts = ({ posts: propPosts, mt }) => {
             const updatedLikedPosts = user.likedPosts.filter((postId) => postId !== id);
             setUser({ ...user, likedPosts: updatedLikedPosts });
 
+            toast.info("You've unliked the post.");
+
         } else {
             const updatedLikedUsers = [...post.likedByUserIds, user._id];
             setUpdatedPost({ ...post, likedByUserIds: updatedLikedUsers });
@@ -98,6 +101,8 @@ const Posts = ({ posts: propPosts, mt }) => {
             }
 
             if (!user.posts.includes(post)) addNotification(post.createdBy.id, notificationMessage);
+
+            toast.success("You've liked the post.");
         }
 
         setUserUpdated(true);
@@ -123,6 +128,8 @@ const Posts = ({ posts: propPosts, mt }) => {
 
             setUser(updatedUser);
             setUserUpdated(true);
+
+            toast.success("You've added " + post.createdBy.name + " as a friend.");
 
             updateFriend(post.createdBy.id);
 
@@ -150,6 +157,8 @@ const Posts = ({ posts: propPosts, mt }) => {
             setUser(updatedUser);
             setUserUpdated(true);
 
+            toast.info("You've removed " + post.createdBy.name + " from your friends list.");
+
             updateFriend(post.createdBy.id);
         }
     }
@@ -161,7 +170,7 @@ const Posts = ({ posts: propPosts, mt }) => {
     const handleComment = (post) => {
 
         if (comment.length < 1)
-            return alert("Comment is Empty");
+            return toast.error("Please enter a comment before submitting.");
 
         const commentByUser = {
             id: user._id,
@@ -203,6 +212,8 @@ const Posts = ({ posts: propPosts, mt }) => {
         }
 
         addNotification(post.createdBy.id, notificationMessage);
+
+        toast.success("Your comment has been added.");
     };
 
     const savePost = (post) => {
@@ -213,6 +224,7 @@ const Posts = ({ posts: propPosts, mt }) => {
         setUser(updatedUser);
         setUserUpdated(true);
 
+        toast.success("You've saved the post.");
     }
 
     const unsavePost = (post) => {
@@ -222,6 +234,8 @@ const Posts = ({ posts: propPosts, mt }) => {
 
         setUser(updatedUser);
         setUserUpdated(true);
+
+        toast.info("You've unsaved the post.");
     }
 
     const handleUserProfile = (id) => {
@@ -278,9 +292,25 @@ const Posts = ({ posts: propPosts, mt }) => {
         }
     }
 
+    function copyLinkToClipboard() {
+        const linkToCopy = "https://sociopedia-aryan.vercel.app";
+    
+        const tempInput = document.createElement('input');
+        tempInput.value = linkToCopy;
+        document.body.appendChild(tempInput);
+    
+        tempInput.select();
+        document.execCommand('copy');
+    
+        document.body.removeChild(tempInput);
+    
+        toast.success("Link copied to clipboard");
+    }
+
     return (
 
         <div className={`w-[95%] m-auto mt-[7.5%] mb-12 space-y-5 lg:w-2/5 lg:ml-[32.5%] lg:${mt} lg:mt-44`}>
+
 
             {posts.map((post) => (
                 <div key={post._id} className="bg-white space-y-5 p-5 rounded-lg">
@@ -346,27 +376,6 @@ const Posts = ({ posts: propPosts, mt }) => {
 
                         </div>
 
-                        {/* <img src={user ? user.profileImageUrl : VITE_URL + "/uploads/emptyprofile.png"} className="w-12 h-12 object-cover rounded-full" alt="" />
-
-                        <div className="relative w-[260px] md:w-[675px] lg:w-[500px]">
-
-                            <input type="text"
-                                onChange={handleCommentContent}
-                                value={comment}
-                                placeholder="Leave a comment"
-                                className="bg-secondary-50 h-12 w-full rounded-3xl pl-2.5 pr-12 focus:outline-none"
-                            />
-                            {user ?
-                                <div className="absolute inset-y-0 right-0 flex items-center pr-2 cursor-pointer" onClick={() => handleComment(post)}>
-                                    <SendOutlinedIcon />
-                                </div>
-                                :
-                                <div className="absolute inset-y-0 right-0 flex items-center pr-2 cursor-pointer" onClick={loginAlert}>
-                                    <SendOutlinedIcon />
-                                </div>
-                            }
-                        </div> */}
-
                     </div>
 
                     {currentPost === post._id && post.comments.length > 0 &&
@@ -431,7 +440,7 @@ const Posts = ({ posts: propPosts, mt }) => {
                             </div>
                         </div>
 
-                        <div className="cursor-pointer">
+                        <div className="cursor-pointer" onClick={copyLinkToClipboard}>
                             <ShareOutlinedIcon />
                         </div>
                     </div>

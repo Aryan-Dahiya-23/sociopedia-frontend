@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import axios from "axios";
+import { toast } from 'react-toastify';
 import PersonRemoveOutlinedIcon from '@mui/icons-material/PersonRemoveOutlined';
 import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
 
@@ -55,6 +56,8 @@ const Friends = () => {
             setUserUpdated(true);
 
             updateFriend(friend._id);
+
+            toast.success("You've added " + friend.fName + " " + friend.lName + " as a friend.");
         }
     };
 
@@ -68,6 +71,8 @@ const Friends = () => {
             setUserUpdated(true);
 
             updateFriend(friend._id);
+
+            toast.info("You've removed " + friend.fName + " " + friend.lName + " from your friends list.");
         }
     }
 

@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../contexts/AuthContext";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
     const navigate = useNavigate();
@@ -60,14 +61,15 @@ const SignIn = () => {
                 setUser(response.data.user);
                 setLoggedIn(true);
                 navigate("/");
+                toast.success("Welcome back! You've successfully signed in.");
             } else {
-                alert("An error occurred during Sign In, Please Try Again!");
+                toast.error("Sign-in failed. Please check your credentials and try again.");
             }
         } catch (error) {
             if (error.response) {
-                alert(error.response.data.msg);
+                toast.error(error.response.data.msg);
             } else {
-                alert("An error occurred during Sign In, Please Try Again!");
+                toast.error("An error occurred during Sign In, Please Try Again!");
             }
         }
     };

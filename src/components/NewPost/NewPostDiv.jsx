@@ -8,6 +8,7 @@ import MicNoneOutlinedIcon from "@mui/icons-material/MicNoneOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import { AuthContext } from "../../contexts/AuthContext";
 import LoadingIndicator from "../UI/LoadingIndicator";
+import { toast } from "react-toastify";
 
 const NewPostDiv = () => {
     const { newPostDiv, setNewPostDiv } = useContext(AuthContext);
@@ -40,11 +41,11 @@ const NewPostDiv = () => {
 
     const handlePost = async () => {
         if (!loggedIn) {
-            return alert("Login First");
+            return toast.error("Please Login First!");
         }
 
         if (!caption && !selectedFile) {
-            return alert("The Post is Empty!");
+            return toast.error("Please enter content for your post before submitting.");
         }
 
         setIsLoading(true);
@@ -82,15 +83,13 @@ const NewPostDiv = () => {
             );
             setIsLoading(false)
             if (response.status === 200) {
-                alert("Post successful");
+                toast.success("Your post has been successfully created.");
                 setNewPostDiv(false);
             } else {
-                console.error("Error posting data");
-                alert("Error posting data");
+                toast.error("Failed to create the post. Please try again.");
             }
         } catch (error) {
-            console.error("Network error:", error);
-            alert("Network error");
+            toast.error("Failed to create the post. Please try again.");
         }
     };
 
@@ -101,8 +100,8 @@ const NewPostDiv = () => {
     return (
         // <div className="bg-white absolute h-full w-full z-50 left-1/2 transform -translate-x-1/2 rounded-xl lg:h-[70%] lg:w-2/4 lg:top-20">
 
-        <div className="bg-white fixed h-full top-0 overflow-y-auto w-full z-[9999] animate-slide-in rounded-xl lg:animate-none lg:transform lg:-translate-x-1/2 lg:h-[80%] lg:w-7/12 lg:left-1/2 lg:top-20">
-           
+        <div className="bg-white fixed h-full top-0 overflow-y-auto w-full z-10 animate-slide-in rounded-xl lg:animate-none lg:transform lg:-translate-x-1/2 lg:h-[80%] lg:w-7/12 lg:left-1/2 lg:top-20">
+
             <div className="w-[95%] h-full m-auto pt-2 pb-2">
                 <div className="flex flex-row justify-between m-auto hover:cursor-pointer">
                     <div className="flex flex-row space-x-2 p-1 rounded-lg hover:bg-secondary-100">

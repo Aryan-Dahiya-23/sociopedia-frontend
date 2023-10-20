@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Avatar from "@mui/material/Avatar";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -53,8 +54,8 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!profileImage) return alert("Please choose a profile picture.")
-        if (!fName || !lName || !email || !username || !password) return alert("Please fill the entries properly")
+        if (!profileImage) return toast.error("Please choose a profile picture.")
+        if (!fName || !lName || !email || !username || !password) return toast.error("Please fill the entries properly")
 
         setIsLoading(true)
 
@@ -88,54 +89,24 @@ const SignUp = () => {
             );
 
             if (response.status === 201) {
-                alert("Registration successful");
+                toast.success("Congratulations! You've successfully signed up.");
                 navigate("/signin");
-            } else if (response.status === 409) {
-                if (response.data.error === "Email already exists") {
-                    alert("Email already exists");
-                } else if (response.data.error === "Username already exists") {
-                    alert("Username already exists");
-                } else {
-                    alert("Registration Failed");
-                }
             } else {
-                alert("An error occurred during registration, Please Try Again!");
+                toast.error("An error occurred during registration, Please Try Again!");
             }
         } catch (error) {
-            alert("An error occurred during registration, Please Try Again!");
+            if (error.response.data.error === "Email already exists") {
+                toast.error("Email already exists");
+            } else if (error.response.data.error === "Username already exists") {
+                toast.error("Username already exists");
+            } else {
+                toast.error("An error occurred during registration, Please Try Again!");
+            }
+            console.log(error.response);
         }
 
         setIsLoading(false);
     };
-
-    function stringToColor(string) {
-        let hash = 0;
-        let i;
-
-        for (i = 0; i < string.length; i += 1) {
-            hash = string.charCodeAt(i) + ((hash << 5) - hash);
-        }
-
-        let color = "#";
-
-        for (i = 0; i < 3; i += 1) {
-            const value = (hash >> (i * 8)) & 0xff;
-            color += `00${value.toString(16)}`.slice(-2);
-        }
-
-        return color;
-    }
-
-    function stringAvatar(name) {
-        return {
-            sx: {
-                bgcolor: stringToColor(name),
-                width: 150,
-                height: 150,
-            },
-            children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
-        };
-    }
 
     return (
         <div className="bg-white flex flex-col items-center w-[95%] m-auto mt-6 rounded-lg lg:w-1/2 lg:mt-6">

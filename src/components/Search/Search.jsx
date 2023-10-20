@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import CloseIcon from '@mui/icons-material/Close';
 import { AuthContext } from '../../contexts/AuthContext';
 import SearchItem from './SearchItem.jsx';
@@ -50,7 +51,7 @@ const Search = () => {
 
         if (debouncedSearchQuery) fetchAccounts();
 
-    }, [debouncedSearchQuery]); 
+    }, [debouncedSearchQuery]);
 
     useEffect(() => {
 
@@ -72,8 +73,6 @@ const Search = () => {
 
         try {
             const response = await axios.post(`${VITE_URL}/updatefriend/${friendId}`, { userId });
-
-            console.log(response.data);
         } catch (error) {
             console.log(error);
         }
@@ -82,6 +81,9 @@ const Search = () => {
     const addFriend = (friend) => {
 
         if (user._id !== friend._id) {
+
+            toast.success("You've added " + friend.fName + " " + friend.lName + " as a friend.");
+
             const updatedUserFriends = [...user.friends, friend._id];
 
             const updatedUser = { ...user, friends: updatedUserFriends };
@@ -95,6 +97,8 @@ const Search = () => {
 
     const removeFriend = (friend) => {
         if (user._id !== friend._id) {
+            toast.info("You've removed " + friend.fName + " " + friend.lName + " from your friends list.");
+
             const updatedUserFriends = user.friends.filter((friendId) => friendId !== friend._id);
 
             const updatedUser = { ...user, friends: updatedUserFriends };

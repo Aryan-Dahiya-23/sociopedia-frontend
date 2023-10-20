@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { NavigationData } from "./NavigationData.jsx";
 import "../../main.css";
+import { toast } from "react-toastify";
 
 const Navigation = () => {
     const navigate = useNavigate();
@@ -42,13 +43,14 @@ const Navigation = () => {
                 }
             );
 
+            toast.success("You've been successfully logged out.");
             setLoggedIn(false);
             setPosts();
             setUserEmail("");
             setUser(null);
             navigate("/");
         } catch (error) {
-            console.error("Error during logout:", error);
+            toast.error("Logout failed. Please try again.");
         }
     };
 
