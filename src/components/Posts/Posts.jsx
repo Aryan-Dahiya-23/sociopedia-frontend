@@ -386,7 +386,7 @@ const Posts = ({ posts: propPosts, mt }) => {
 
                                     <div className="flex flex-row w-full pb-1 space-x-2 border-b border-gray-200">
 
-                                        <div className={` ${comment.comment.length > 70 && "w-14"} lg:w-1/12`}>
+                                        <div className={` ${comment.comment.length > 30 && "w-14"} lg:w-1/12`}>
                                             <img src={comment.profileImageUrl} alt="User Profile" className="w-9 h-9 object-cover rounded-full" />
                                         </div>
 
@@ -395,7 +395,7 @@ const Posts = ({ posts: propPosts, mt }) => {
                                                 {comment.name}
                                             </div>
 
-                                            <div className="text-xs lg:text-base">
+                                            <div className="text-base">
                                                 {comment.comment}
                                             </div>
                                         </div>
