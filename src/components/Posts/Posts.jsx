@@ -294,16 +294,16 @@ const Posts = ({ posts: propPosts, mt }) => {
 
     function copyLinkToClipboard() {
         const linkToCopy = "https://sociopedia-aryan.vercel.app";
-    
+
         const tempInput = document.createElement('input');
         tempInput.value = linkToCopy;
         document.body.appendChild(tempInput);
-    
+
         tempInput.select();
         document.execCommand('copy');
-    
+
         document.body.removeChild(tempInput);
-    
+
         toast.success("Link copied to clipboard");
     }
 
@@ -384,15 +384,18 @@ const Posts = ({ posts: propPosts, mt }) => {
                             {post.comments.map((comment) => (
                                 <div key={comment._id}>
 
-                                    <div className="flex flex-row pb-1 space-x-4 border-b border-gray-200">
-                                        <img src={comment.profileImageUrl} alt="User Profile" className="w-9 h-9 object-cover rounded-full" />
+                                    <div className="flex flex-row w-full pb-1 space-x-2 border-b border-gray-200">
 
-                                        <div className="flex flex-row space-x-4 m-auto">
+                                        <div className={` ${comment.comment.length > 70 && "w-14"} lg:w-1/12`}>
+                                            <img src={comment.profileImageUrl} alt="User Profile" className="w-9 h-9 object-cover rounded-full" />
+                                        </div>
+
+                                        <div className="flex flex-col m-auto">
                                             <div className="font-semibold">
                                                 {comment.name}
                                             </div>
 
-                                            <div>
+                                            <div className="text-xs lg:text-base">
                                                 {comment.comment}
                                             </div>
                                         </div>
