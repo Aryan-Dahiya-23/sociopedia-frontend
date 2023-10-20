@@ -7,6 +7,7 @@ import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import PersonalVideoIcon from '@mui/icons-material/PersonalVideo';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import MicNoneOutlinedIcon from '@mui/icons-material/MicNoneOutlined';
+import { toast } from 'react-toastify';
 
 const NewPost = () => {
 
@@ -19,7 +20,7 @@ const NewPost = () => {
 
     const handleClick = () => {
         if (!user) {
-            alert("Please login first!");
+            toast.error("Please login first!");
             navigate("/signin");
         } else {
             setNewPostDiv(true);

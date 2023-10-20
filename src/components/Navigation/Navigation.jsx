@@ -22,7 +22,7 @@ const Navigation = () => {
 
     const handleClick = () => {
         if (!loggedIn) {
-            alert("Please login first!");
+            toast.error("Please login first!");
             navigate("/signin");
         } else {
             setNewPostDiv(true);
@@ -55,7 +55,7 @@ const Navigation = () => {
     };
 
     const loginAlert = () => {
-        alert("Please login first!");
+        toast.error("Please login first!");
         navigate("/signin");
     };
 

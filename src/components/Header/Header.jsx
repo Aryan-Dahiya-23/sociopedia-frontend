@@ -8,6 +8,7 @@ import Search from "../Search/Search";
 import NewPostDiv from "../NewPost/NewPostDiv";
 import SearchIcon from "@mui/icons-material/Search";
 import ChatIcon from "@mui/icons-material/Chat";
+import { toast } from "react-toastify";
 
 const Header = () => {
 
@@ -65,7 +66,7 @@ const Header = () => {
 
   const handleSearch = () => {
     if (!loggedIn) {
-      alert("Please login first");
+      toast.error("Please login first");
       navigate("/signin");
     } else {
       setSearch(true);

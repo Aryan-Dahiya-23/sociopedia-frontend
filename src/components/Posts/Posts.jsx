@@ -241,7 +241,7 @@ const Posts = ({ posts: propPosts, mt }) => {
     const handleUserProfile = (id) => {
 
         if (!user) {
-            alert("Please login first!");
+            toast.error("Please login first!");
             navigate("/signin");
         }
         else if (user._id !== id) {
@@ -269,7 +269,7 @@ const Posts = ({ posts: propPosts, mt }) => {
     }
 
     const loginAlert = () => {
-        alert("Please login first!");
+        toast.error("Please login first!");
         navigate("/signin");
     }
 
