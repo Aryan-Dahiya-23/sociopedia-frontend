@@ -124,6 +124,8 @@ const Profile = () => {
                     console.log(error);
                     setFriends();
                 }
+
+                setIsLoadingFriends(false);
             }
         }
 
@@ -215,7 +217,7 @@ const Profile = () => {
                     <Pulse imageHeight="h-10" imageWidth="w-10" height="h-2.5" />
                     <Pulse imageHeight="h-10" imageWidth="w-10" height="h-2.5" />
                     <Pulse imageHeight="h-10" imageWidth="w-10" height="h-2.5" />
-                    <div className="hidden lg:inline-block">
+                    <div className="hidden w-full lg:inline-block">
                         <Pulse imageHeight="h-10" imageWidth="w-10" height="h-2.5" />
                         <Pulse imageHeight="h-10" imageWidth="w-10" height="h-2.5" />
                     </div>
