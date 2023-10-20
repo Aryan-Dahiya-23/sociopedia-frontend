@@ -340,7 +340,7 @@ const Posts = ({ posts: propPosts, mt }) => {
                         </div>
                     </div>
 
-                    <div className="text-sm md:text-base">{post.caption}</div>
+                    <div className="text-base">{post.caption}</div>
 
 
                     {post.imageUrl ?
