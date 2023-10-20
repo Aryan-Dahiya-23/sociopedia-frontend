@@ -126,6 +126,25 @@ const Navigation = () => {
                         );
                     }
 
+                    if (user && loggedIn && item.title === "Profile") {
+                        return (
+                            <li
+                                key={index}
+                                className="icons cursor-pointer lg:px-1.5 lg:py-2.5 lg:rounded-xl lg:hover:bg-secondary-50"
+                                onClick={scrollToTop}
+                            >
+                                <Link to={item.path}>
+                                    <div className="flex flex-col space-y-1 lg:flex-row lg:space-y-0">
+                                        <div className="m-auto">
+                                            <img src={user.profileImageUrl} className="rounded-full object-cover w-[30px] h-[30px] lg:h-[27.5px] lg:w-[27.5px]" alt="" />
+                                        </div>
+                                        <span className={`${isMobileScreen() && "text-xs"} lg:ml-3`}>{item.title}</span>
+                                    </div>
+                                </Link>
+                            </li>
+                        );
+                    }
+
                     if (item.title === "Create Post") {
                         return (
                             <li
