@@ -70,7 +70,7 @@ const Navigation = () => {
         // <div className="bg-white fixed w-full bottom-0 h-10 md:h-[360px] lg:relative lg:h-auto lg:w-[15%]  lg:mt-[5%] lg:ml-[7.5%] lg:rounded-lg">
 
         <div className="bg-white flex justify-center items-center fixed w-full h-14 px-5 border-t border-secondary-200 bottom-0 z-[9999] 
-        lg:absolute lg:h-[260px] lg:w-[15%] lg:p-0 lg:top-40 lg:left-28 lg:rounded-lg lg:border-none lg:z-0"
+         lg:h-[260px] lg:w-[15%] lg:p-0 lg:top-40 lg:left-28 lg:rounded-lg lg:border-none lg:z-0"
         >
 
             {/* <div className="bg-white flex justify-center items-center fixed w-full h-14 px-5 border-t border-secondary-200 bottom-0 md:h-[360px] 
