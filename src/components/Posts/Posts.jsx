@@ -386,11 +386,11 @@ const Posts = ({ posts: propPosts, mt }) => {
 
                                     <div className="flex flex-row w-full pb-1 space-x-2 border-b border-gray-200">
 
-                                        <div className={` ${comment.comment.length > 40 && "w-20"} ${comment.comment.length > 100 && "w-full"} ${comment.comment.length > 100 && "lg:w-5/12"} lg:w-1/12`}>
+                                        <div className={`lg:w-1/12`}>
                                             <img src={comment.profileImageUrl} alt="User Profile" className="w-9 h-9 object-cover rounded-full" />
                                         </div>
 
-                                        <div className="flex flex-col m-auto">
+                                        <div className="flex flex-col m-auto w-10/12 lg:w-full">
                                             <div className="font-semibold">
                                                 {comment.name}
                                             </div>
