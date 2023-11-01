@@ -281,12 +281,19 @@ const Posts = ({ posts: propPosts, mt }) => {
         const createdAtTimestamp = createdAtDate.getDate() + createdAtDate.getMonth() + createdAtDate.getFullYear();
         const currentTimestamp = currentDate.getDate() + currentDate.getMonth() + currentDate.getFullYear();
 
-        const daysAgo = currentTimestamp - createdAtTimestamp
+        // const daysAgo = currentTimestamp - createdAtTimestamp
+
+        let daysAgo = currentDate - createdAtDate;
+        daysAgo = Math.floor(daysAgo / (1000 * 60 * 60 * 24));
 
         if (daysAgo === 0) {
             return "Today"
         } else if (daysAgo === 1) {
             return "Yesterday"
+        }
+        else if(daysAgo > 30){
+            const months = daysAgo / 30
+            return `${months} months ago`
         } else {
             return `${daysAgo} days ago`;
         }
@@ -313,19 +320,19 @@ const Posts = ({ posts: propPosts, mt }) => {
 
 
             {posts.map((post) => (
-                <div key={post._id} className="bg-white space-y-5 p-5 rounded-lg">
+                <div key={post._id} className="p-5 space-y-5 bg-white rounded-lg">
 
                     <div className="flex flex-row justify-between">
 
                         <div className="flex flex-row space-x-2.5 hover:cursor-pointer" onClick={() => handleUserProfile(post.createdBy.id)}>
-                            <img src={post.createdBy.profileImageUrl} className="w-12 h-12 rounded-full object-cover" alt="" />
+                            <img src={post.createdBy.profileImageUrl} className="object-cover w-12 h-12 rounded-full" alt="" />
                             <div className="flex flex-col hover:text-secondary-700">
                                 <span>{post.createdBy.name}</span>
                                 <span className="text-xs lg:text-sm">{calculateDaysAgo(post.createdAt)}</span>
                             </div>
                         </div>
 
-                        <div className="bg-primary-100 border rounded-full mt-auto mb-auto p-1 text-primary-500 hover:text-primary-400">
+                        <div className="p-1 mt-auto mb-auto border rounded-full bg-primary-100 text-primary-500 hover:text-primary-400">
 
                             {user && (
                                 user.friends.includes(post.createdBy.id) ? (
@@ -345,7 +352,7 @@ const Posts = ({ posts: propPosts, mt }) => {
 
                     {post.imageUrl ?
                         <div className="w-full">
-                            <img src={post.imageUrl} className="h-full w-full object-cover rounded-xl" />
+                            <img src={post.imageUrl} className="object-cover w-full h-full rounded-xl" />
                         </div> :
                         <></>
                     }
@@ -353,7 +360,7 @@ const Posts = ({ posts: propPosts, mt }) => {
                     <div className="w-full flex flex-row justify-between m-auto px-1 space-x-2.5 lg:px-1.5">
 
                         <div className="w-2/12 lg:w-auto">
-                            <img src={user ? user.profileImageUrl : VITE_URL + "/uploads/emptyprofile.png"} className="w-12 h-12 object-cover rounded-full" alt="" />
+                            <img src={user ? user.profileImageUrl : VITE_URL + "/uploads/emptyprofile.png"} className="object-cover w-12 h-12 rounded-full" alt="" />
                         </div>
 
                         <div className="relative w-10/12 md:w-[675px] lg:w-[500px]">
@@ -387,10 +394,10 @@ const Posts = ({ posts: propPosts, mt }) => {
                                     <div className="flex flex-row w-full pb-1 space-x-2 border-b border-gray-200">
 
                                         <div className={`lg:w-1/12`}>
-                                            <img src={comment.profileImageUrl} alt="User Profile" className="w-9 h-9 object-cover rounded-full" />
+                                            <img src={comment.profileImageUrl} alt="User Profile" className="object-cover rounded-full w-9 h-9" />
                                         </div>
 
-                                        <div className="flex flex-col m-auto w-10/12 lg:w-full">
+                                        <div className="flex flex-col w-10/12 m-auto lg:w-full">
                                             <div className="font-semibold">
                                                 {comment.name}
                                             </div>
@@ -414,7 +421,7 @@ const Posts = ({ posts: propPosts, mt }) => {
 
                                 {user &&
                                     (user.likedPosts.includes(post._id) ? (
-                                        <FavoriteIcon className="cursor-pointer text-red-500" onClick={() => toggleLiked(post)} />
+                                        <FavoriteIcon className="text-red-500 cursor-pointer" onClick={() => toggleLiked(post)} />
                                     ) : (
                                         <FavoriteBorderOutlinedIcon className="cursor-pointer" onClick={() => toggleLiked(post)} />
                                     ))}
