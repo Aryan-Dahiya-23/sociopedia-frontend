@@ -292,7 +292,7 @@ const Posts = ({ posts: propPosts, mt }) => {
             return "Yesterday"
         }
         else if(daysAgo > 30){
-            const months = daysAgo / 30
+            const months = Math.floor(daysAgo / 30); 
             return `${months} months ago`
         } else {
             return `${daysAgo} days ago`;
