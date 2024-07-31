@@ -110,7 +110,7 @@ const NewPostDiv = () => {
                                 src={
                                     user
                                         ? user.profileImageUrl
-                                        : VITE_URL + "/uploads/emptyprofile.png"
+                                        : "https://raw.githubusercontent.com/Aryan-Dahiya-23/sociopedia-backend/master/uploads/emptyprofile.png"
                                 }
                                 className="w-12 h-12 rounded-full object-cover"
                                 alt=""
