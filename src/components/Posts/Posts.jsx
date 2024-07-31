@@ -360,7 +360,7 @@ const Posts = ({ posts: propPosts, mt }) => {
                     <div className="w-full flex flex-row justify-between m-auto px-1 space-x-2.5 lg:px-1.5">
 
                         <div className="w-2/12 lg:w-auto">
-                            <img src={user ? user.profileImageUrl : VITE_URL + "/uploads/emptyprofile.png"} className="object-cover w-12 h-12 rounded-full" alt="" />
+                            <img src={user ? user.profileImageUrl : "https://raw.githubusercontent.com/Aryan-Dahiya-23/sociopedia-backend/master/uploads/emptyprofile.png"} className="object-cover w-12 h-12 rounded-full" alt="" />
                         </div>
 
                         <div className="relative w-10/12 md:w-[675px] lg:w-[500px]">
